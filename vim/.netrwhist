@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/ppandey/sandbox/countingqf/cqf_rns'
+let g:netrw_dirhist_2='/home/ppandey/sandbox/countingqf/cuckoofilter/example'
+let g:netrw_dirhist_3='/home/ppandey/sandbox/countingqf/cuckoofilter/src'
+let g:netrw_dirhist_4='/home/ppandey/sandbox/countingqf/sigmod16'
+let g:netrw_dirhist_5='/home/ppandey/sandbox/countingqf/gqf_inc_counter'

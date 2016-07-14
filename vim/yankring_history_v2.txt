@@ -1,0 +1,100 @@
+#ifdef LOG_WAIT_TIME	ofstream wait_time_log;	wait_time_log.open(log_file.c_str());	wait_time_log << "TotalTime\tNumLocks\tNumSingleAttempt\tPercentageSingleTime" << endl;	for (uint32_t i=0; i<cf.num_locks; i++)		wait_time_log << cf.wait_times[i].total_time << "\t" 			<< cf.wait_times[i].locks_taken << "\t" 			<< cf.wait_times[i].locks_acquired_single_attempt << "\t"			<< ((double)(cf.wait_times[i].locks_taken-cf.wait_times[i].locks_acquired_single_attempt)/(double)cf.wait_times[i].locks_taken)*100			<< endl;	wait_time_log.close();#endif,v
+#,v
+ ,v
+10.177081 10.611205,v
+          legend entries={Uniform Random, Zipfian, Kmer, Firehose (active), Firehose (powerlaw)},,V
+        \addplot[color=teal,mark=oplus*]       table {data/gqf-app-kmer-threads-50m-26-insert.txt};,V
+real-life,v
+\begin{figure}[t]  \centering  \begin{tikzpicture}      \begin{axis}[      % title=Insertion per second against Load Factor (zipf dist),          xlabel={Load Factor},          ylabel={Million Insertions per Second},          xmin=0, xmax=100,          ymin=0, ymax=55,          xtick={0,20,40,60,80,100},          ytick={0,5,10,15,20,25,30,35,40,45,50,55},          grid=major,          legend entries={Kmers, Firehose (active), Firehose (powerlaw)},        ]        \addplot[color=orange,mark=halfcircle]       table {data/gqf-app-kmer-50m-26-insert.txt};        \addplot[color=magenta,mark=Mercedes star]       table {data/gqf-app-stream-50m-26-insert.txt};        \addplot[color=teal,mark=oplus*]       table {data/gqf-app-stream-zipf-50m-26-insert.txt};      \end{axis}    \end{tikzpicture}    \caption{ In-memory insert performance of the \cqf with real-life      data sets.}  \label{fig:app-exp}\end{figure},v
+11.720581 11.590172,v
+16.863406 13.777900,v
+3942 12.813942,v
+x_0    y_0    y_11 12.813942 12.8139422 16.863406 13.7779003 11.720581 11.5901724 10.177081 10.611205,V
+x_0    y_0    y_11 9.051412 9.0579712 16.567263 16.9779293 23.320896 23.4301784 29.052876 30.321407,V
+x_0    y_0    y_11 8.970219 9.0090092 16.650017 16.8123743 22.341376 22.8206304 29.708853 29.708853,V
+3,v
+x_0    y_01 8.9702192 16.6500173 22.3413764 29.708853,v
+x_0    y_0,V
+		fprintf(fp_insert, "x_0");		for (run = 0; run < nruns; run++) {			fprintf(fp_insert, "    y_%d", run);		}		fprintf(fp_insert, "\n");		for (exp = 0; exp < 2*npoints; exp += 2) {			fprintf(fp_insert, "%d", ((exp/2)*(100/npoints)));			for (run = 0; run < nruns; run++) {				fprintf(fp_insert, " %f",								0.001 * (nvals/npoints)/(tv2msec(tv_insert[exp+1][run]) - tv2msec(tv_insert[exp][run])));			}			fprintf(fp_insert, "\n");		},v
+\begin{figure}[t]  \centering  \begin{tikzpicture}      \begin{axis}[      % title=Insertion per second against Load Factor (zipf dist),          xlabel={Load Factor},          ylabel={Million Insertions per Second},          xmin=0, xmax=100,          ymin=0, ymax=55,          xtick={0,20,40,60,80,100},          ytick={0,5,10,15,20,25,30,35,40,45,50,55},          grid=major,          legend entries={Kmers, Firehose (active), Firehose (powerlaw)},        ]        \addplot[color=orange,mark=halfcircle]       table {data/gqf-app-kmer-50m-26-insert.txt};        \addplot[color=magenta,mark=Mercedes star]       table {data/gqf-app-stream-50m-26-insert.txt};        \addplot[color=teal,mark=oplus*]       table {data/gqf-app-stream-zipf-50m-26-insert.txt};      \end{axis}    \end{tikzpicture}    \caption{ In-memory insert performance of the \cqf with real-life      data sets.}  \label{fig:app-exp}\end{figure},v
+		printf("Insert Performance:\n");,V
+				 "                    uniform_pregen_sort\n",V
+		printf("Insert Performance written\n");,V
+		printf("Wiring results to file: %s\n", filename_insert);,V
+						0.001 * numvals/(tv2msec(tv_insert[1][0]) - tv2msec(tv_insert[0][0])));,V
+		fprintf(fp_insert, " %f",,V
+		fprintf(fp_insert, " %f",						0.001 * numvals/(tv2msec(tv_insert[1][0]) - tv2msec(tv_insert[0][0])));,V
+,V
+		void *vals_gen_state;,V
+	pthread_t threads[4];,V
+	void *vals_gen_state;	__uint128_t *vals;	pthread_t threads[4];	insert_args args[4];	uint64_t idx = 0;		vals_gen_state = vals_gen->init(nvals, filter_ds.range(), param);	vals = (__uint128_t *)malloc(nvals*sizeof(__uint128_t));	for (int i = 0; i < tcnt; i++, idx += nvals/tcnt) {		args[i].filter_ds = filter_ds;		assert(vals_gen->gen_exc(vals_gen_state, idx, nvals/tcnt, vals + idx) == nvals/tcnt);		args[i].vals = vals + idx;		args[i].cnt = nvals/tcnt;	},v
+	printf("Wiring results to file: %s\n", filename_insert);	fprintf(fp_insert, "x_0");	for (run = 0; run < nruns; run++) {		fprintf(fp_insert, "    y_%d", run);	}	fprintf(fp_insert, "\n");	for (exp = 0; exp < 2*npoints; exp += 2) {		fprintf(fp_insert, "%d", ((exp/2)*(100/npoints)));		for (run = 0; run < nruns; run++) {			fprintf(fp_insert, " %f",							0.001 * (nvals/npoints)/(tv2msec(tv_insert[exp+1][run]) - tv2msec(tv_insert[exp][run])));		}		fprintf(fp_insert, "\n");	}	printf("Insert Performance written\n");	printf("Wiring results to file: %s\n", filename_exit_lookup);	fprintf(fp_exit_lookup, "x_0");	for (run = 0; run < nruns; run++) {		fprintf(fp_exit_lookup, "    y_%d", run);	}	fprintf(fp_exit_lookup, "\n");	for (exp = 0; exp < 2*npoints; exp += 2) {		fprintf(fp_exit_lookup, "%d", ((exp/2)*(100/npoints)));		for (run = 0; run < nruns; run++) {			fprintf(fp_exit_lookup, " %f",							0.001 * (nvals/npoints)/(tv2msec(tv_exit_lookup[exp+1][run]) - tv2msec(tv_exit_lookup[exp][run])));		}		fprintf(fp_exit_lookup, "\n");	}	printf("Existing Lookup Performance written\n");	printf("Wiring results to file: %s\n", filename_false_lookup);	fprintf(fp_false_lookup, "x_0");	for (run = 0; run < nruns; run++) {		fprintf(fp_false_lookup, "    y_%d", run);	}	fprintf(fp_false_lookup, "\n");	for (exp = 0; exp < 2*npoints; exp += 2) {		fprintf(fp_false_lookup, "%d", ((exp/2)*(100/npoints)));		for (run = 0; run < nruns; run++) {			fprintf(fp_false_lookup, " %f",							0.001 * (nvals/npoints)/(tv2msec(tv_false_lookup[exp+1][run]) - tv2msec(tv_false_lookup[exp][run])));		}		fprintf(fp_false_lookup, "\n");	}	printf("False Lookup Performance written\n");	printf("FP rate: %f (%lu/%lu)\n", 1.0 * fps / nvals, fps, nvals);,v
+			filter_ds.init(nbits);,V
+				 "  -f outputfile  [ Default qf. ]\n",V
+			fprintf(fp_false_lookup, " %f",							0.001 * (nvals/npoints)/(tv2msec(tv_false_lookup[exp+1][run]) - tv2msec(tv_false_lookup[exp][run])));,V
+				gettimeofday(&tv_insert[exp+1][run], NULL);,V
+				gettimeofday(&tv_insert[exp][run], NULL);,V
+		,V
+void multi_threaded_insertion(filter filter_ds, rand_generator *vals_gen, void *param, uint64_t nvals, int tcnt),V
+				outputfile = optarg;,V
+nruns = strtol(optarg, &term, 10);				if (*term) {					fprintf(stderr, "Argument to -r must be an integer\n");					usage(argv[0]);					exit(1);				},v
+			case 'f':				outputfile = optarg;				break;,V
+	insert_args *a = (insert_args *)args;,V
+	for (int i = 0; i < tcnt; i++) {,V
+	if (pthread_join(thread1, NULL)) {		fprintf(stderr, "Error joining thread1\n");		exit(0);	},v
+	,V
+	for (int i = 0; i < tcnt; i++, idx += nvals/tcnt) {,V
+	if (pthread_create(&thread1, NULL, &ds_insert, &args1)) {		fprintf(stderr, "Error creating thread1\n");		exit(0);	},v
+		idx += nvals/tcnt;``,V
+		vals_gen_state = vals_gen->init(nvals, filter_ds.range(), param);,V
+				assert(vals_gen->gen(vals_gen_state, nitems, vals) == nitems);,V
+	pthread_t thread1, thread2, thread3, thread4;,V
+		args->filter_ds.insert(a->cf, a->vals[i], 0, a->freq);,V
+					filter_ds.insert(vals[m]);,V
+		/*fprintf(stdout, "Inserting: %ld\n", a->vals[i]);*/,V
+	return NULL;,V
+	fprintf(stdout, "Entering thread with bounds: %ld %ld\n", a->start, a->end);,V
+	insert_args *a = (insert_args *)args;	fprintf(stdout, "Entering thread with bounds: %ld %ld\n", a->start, a->end);	for (int i = a->start; i < a->end; i++) {		/*fprintf(stdout, "Inserting: %ld\n", a->vals[i]);*/		qf_insert(a->cf, a->vals[i], 0, a->freq);	}	return NULL;,v
+typedef struct insert_args {	filter filter_ds;	void *vals;	uint64_t cnt;} insert_args;,v
+n,v
+alias calc='bc -l',V
+C,v
+	state->nextoutput += noutputs;,V
+int uniform_pregen_sort_gen_rand(void *_state, uint64_t noutputs, __uint128_t *outputs){	uniform_pregen_sort_state *state = (uniform_pregen_sort_state *)_state;	assert(state->nextoutput + noutputs <= state->maxoutputs);	memcpy(outputs, state->outputs+state->nextoutput, noutputs * sizeof(*state->outputs));	state->nextoutput += noutputs;	return noutputs;},v
+int custom_pregen_gen_rand(void *_state, uint64_t noutputs, __uint128_t *outputs){	custom_pregen_state *state = (custom_pregen_state *)_state;	assert(state->nextoutput + noutputs <= state->maxoutputs);	memcpy(outputs, state->outputs+state->nextoutput, noutputs * sizeof(*state->outputs));	state->nextoutput += noutputs;	return noutputs;},v
+	return noutputs;,V
+	},V
+		outputs[i] = (1 * outputs[i]) % state->maxvalue;,V
+		},V
+			outputs[i] = (outputs[i] * RAND_MAX) + result;,V
+			random_r(state->rand_state, &result);,V
+		for (j = 0; j < 4; j++) {,V
+		int32_t result;,V
+	for (i = 0; i < noutputs; i++) {,V
+	memset(outputs, 0, noutputs*sizeof(__uint128_t));,V
+	assert(state->rand_state != NULL);,V
+	uniform_online_state *state = (uniform_online_state *)_state;,V
+	uint32_t i, j;,V
+int uniform_online_gen_rand(void *_state, uint64_t noutputs, __uint128_t *outputs){	uint32_t i, j;	uniform_online_state *state = (uniform_online_state *)_state;	assert(state->rand_state != NULL);	memset(outputs, 0, noutputs*sizeof(__uint128_t));	for (i = 0; i < noutputs; i++) {		int32_t result;		for (j = 0; j < 4; j++) {			random_r(state->rand_state, &result);			outputs[i] = (outputs[i] * RAND_MAX) + result;		}		outputs[i] = (1 * outputs[i]) % state->maxvalue;	}	return noutputs;},v
+int uniform_pregen_gen_rand(void *_state, uint64_t noutputs, __uint128_t *outputs){	uniform_pregen_state *state = (uniform_pregen_state *)_state;	assert(state->nextoutput + noutputs <= state->maxoutputs);	memcpy(outputs, state->outputs+state->nextoutput, noutputs * sizeof(*state->outputs));	state->nextoutput += noutputs;	return noutputs;},v
+int zipfian_pregen_gen_rand(void *_state, uint64_t noutputs, __uint128_t *outputs){	zipfian_pregen_state *state = (zipfian_pregen_state *)_state;	assert(state->nextoutput + noutputs <= state->maxoutputs);	memcpy(outputs, state->outputs+state->nextoutput, noutputs * sizeof(*state->outputs));	state->nextoutput += noutputs;	return noutputs;},v
+int app_pregen_gen_rand(void *_state, uint64_t noutputs, __uint128_t *outputs){	app_pregen_state *state = (app_pregen_state *)_state;	assert(state->nextoutput + noutputs <= state->maxoutputs);	memcpy(outputs, state->outputs+state->nextoutput, noutputs * sizeof(*state->outputs));	state->nextoutput += noutputs;	return noutputs;},v
+typedef int (*gen_rand_exclusive)(void *state, uint64_t index, uint64_t noutputs, __uint128_t *outputs);,V
+typedef int (*gen_rand)(void *state, uint64_t noutputs, __uint128_t *outputs);,V
+	rand_generator *vals_gen;,V
+CFLAGS=-Wall -I. -O3 -pthread -Wno-unused-result,V
+CFLAGS=-Wall -I. -O3 -pthread -Wno-unused-result -DLOG_WAIT_TIME,V
+#ifdef LOG_WAIT_TIME,V
+#include <pthread.h>,V
+       legend entries={$QF$, $GeneralQF$, $HarwardCF$},,V
+%,v
+#endif,V
+#if 0,V
+#if 1,V
+			uint64_t rank = bitrank(get_block(qf, block_index)->runends[0], insert_index % SLOTS_PER_BLOCK);,V
+				insert_index = block_index ,V
+			} else {,V
+				insert_index = hash_bucket_index * SLOTS_PER_BLOCK + next_run_index;,V
+			uint64_t block_index = insert_index / SLOTS_PER_BLOCK;,V
+{,v
+	if (ignore % 64) {		if (popcnt(val & ~BITMASK(ignore % 64)) <= rank)			rank -= popcnt(val & ~BITMASK(ignore % 64));		else			return bitselect(val & ~BITMASK(ignore % 64), rank);	}	else { 		if (popcnt(val) <= rank)			rank -= popcnt(val);		else			return bitselect(val, rank);	}	return 64;,V
