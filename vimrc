@@ -21,8 +21,15 @@ endif
 colorscheme molokai
 set background=dark
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+augroup vimrc_autocmds
+    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+    autocmd BufEnter * match OverLength /\%81v.*/
+augroup END
+
+set formatoptions=cqt
+set textwidth=80
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 let g:tex_flavor='latex'
 set iskeyword+=:
