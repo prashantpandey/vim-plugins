@@ -116,6 +116,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function set_title()
+{
+  echo -ne "\033]0;${1}\007"
+}
+
+
+alias title='set_title'
+
 alias c='clear'
 alias ..='cd ..'
 alias calc='bc -l'
