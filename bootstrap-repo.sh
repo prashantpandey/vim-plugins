@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo apt-get -y install vim git openssh-client openssh-server libssl-dev cscope ctags exuberant-ctags build-essential cmake libboost-all-dev libgnome2-bin tmux xclip
+sudo apt-get -y install curl vim git openssh-client openssh-server libssl-dev cscope ctags exuberant-ctags build-essential cmake libboost-all-dev libgnome2-bin tmux xclip
 sudo apt-get install texlive-full texmaker
 mkdir code
 mkdir paper
