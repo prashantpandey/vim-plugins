@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo apt-get -y install curl vim git openssh-client openssh-server libssl-dev cscope ctags exuberant-ctags build-essential cmake libboost-all-dev libgnome2-bin tmux xclip
+sudo apt-get -y install curl vim git openssh-client openssh-server libssl-dev cscope ctags exuberant-ctags build-essential cmake libboost-all-dev libgnome2-bin tmux xclip subversion
 sudo apt-get install texlive-full texmaker
 mkdir code
 mkdir paper
@@ -29,5 +29,7 @@ git clone git@github.com:combine-lab/mantis_paper.git
 git clone git@github.com:combine-lab/rainbowfish-paper.git
 git clone git@github.com:oscarlab/affine-model.git
 git clone git@github.com:oscarlab/betrfs-papers.git
+cd -
+svn checkout  https://svn.cs.stonybrook.edu/repos/watermelon
 cd -
 
