@@ -3,6 +3,7 @@ sudo apt-get -y install curl vim git openssh-client openssh-server libssl-dev cs
 sudo apt-get install texlive-full texmaker
 mkdir code
 mkdir paper
+mkdir personal
 cd code
 git clone git@github.com:splatlab/kmercounting.git
 git clone git@github.com:splatlab/countingqf.git
@@ -19,6 +20,7 @@ git clone git@github.com:combine-lab/rainbowfish.git
 git clone git@github.com:oscarlab/betrfs.git
 git clone git@github.com:oscarlab/betrfs-private.git
 git clone git@github.com:oscarlab/Be-Tree.git
+git clone git@bitbucket.org:scalablecms/scalablecms.git
 cd -
 cd paper;
 git clone git@github.com:splatlab/countingqf-paper.git
@@ -32,4 +34,11 @@ git clone git@github.com:oscarlab/betrfs-papers.git
 cd -
 svn checkout  https://svn.cs.stonybrook.edu/repos/watermelon
 cd -
+cd personal;
+git clone git@bitbucket.org:prashant_pandey/website.git
+git clone git@bitbucket.org:prashant_pandey/personaldocs.git
+git clone git@bitbucket.org:prashant_pandey/thesis.git
+cd -
+
+
 
