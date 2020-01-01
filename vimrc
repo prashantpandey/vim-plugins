@@ -4,21 +4,26 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Display options
 syntax on
+set colorcolumn=80
 set ruler
 set cursorline
 set number
-set list!                       " Display unprintable characters
-set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
+"set list!                       " Display unprintable characters
+"set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
+set listchars=trail:•,extends:»,precedes:«
 if $TERM =~ '256color'
   set t_Co=256
 elseif $TERM =~ '^xterm$'
   set t_Co=256
 endif
-colorscheme molokai
+colorscheme srcery-drk
+"colorscheme molokai
 set background=dark
 
 augroup vimrc_autocmds
@@ -31,11 +36,14 @@ set textwidth=80
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
 
-let g:tex_flavor='latex'
+"let g:tex_flavor='latex'
 set iskeyword+=:
-"set spelllang=en_gb spell
+set spelllang=en_us spell
+hi SpellBad cterm=underline
 autocmd BufRead,BufNewFile *.tex setlocal spelllang=en_us spell
 set complete+=kspell
+"hi clear SpellBad
+"hi SpellBad cterm=standout,bold
 
 " Misc
 set modeline                    " enable modelines
@@ -184,3 +192,8 @@ set shortmess+=A
 " Toggle paste mode while in insert mode with F12
 set pastetoggle=<F12>
 
+" deleting a word
+imap <C-d> <C-[>diwi
+
+" search visually selected text
+vnoremap // y/<C-R>"<CR>
