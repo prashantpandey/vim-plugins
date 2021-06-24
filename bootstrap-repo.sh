@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo apt-get -y install curl vim git openssh-client openssh-server libssl-dev cscope ctags exuberant-ctags build-essential cmake libboost-all-dev libgnome2-bin tmux xclip subversion libbz2-dev net-tools pdftk
+sudo apt-get -y install curl vim git openssh-client openssh-server libssl-dev cscope ctags exuberant-ctags build-essential cmake libboost-all-dev libgnome2-bin tmux xclip subversion libbz2-dev net-tools pdftk liblzma-dev google-perftools libgoogle-perftools-dev protobuf-compiler
 sudo apt-get install texlive-full texmaker
 mkdir ~/bin
 scp ppandey@ocean.compbio.cs.cmu.edu:/opt/local/bin/git-repo ~/bin
